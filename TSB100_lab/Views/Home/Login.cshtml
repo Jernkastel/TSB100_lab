@@ -1,0 +1,19 @@
+﻿@model TSB100_lab.Models.UserCredentials
+
+<h1>Logga in</h1>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div>Namn: </div>
+        <div>@Html.TextBoxFor(m => m.Username)</div>
+    </div>
+
+    <div class="row">
+        <div>Lösenord: </div>
+        <div>@Html.PasswordFor(m => m.Password)</div>
+    </div>
+    <div class="row">
+        <input type="submit" value="Log in" class="btn btn-default" />
+    </div>
+}
