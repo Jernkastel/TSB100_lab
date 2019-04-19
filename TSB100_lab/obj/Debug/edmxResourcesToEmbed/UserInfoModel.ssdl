@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserInfoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DiaryContent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Author" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Entry" Type="text" Nullable="false" />
+    <Property Name="Important" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserCredentials">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdminStatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Author">
+    <End Role="UserCredentials" Type="Self.UserCredentials" Multiplicity="1" />
+    <End Role="DiaryContent" Type="Self.DiaryContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserCredentials">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="DiaryContent">
+        <PropertyRef Name="Author" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UserInfoDBModelStoreContainer">
+    <EntitySet Name="DiaryContent" EntityType="Self.DiaryContent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserCredentials" EntityType="Self.UserCredentials" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Author" Association="Self.FK_Author">
+      <End Role="UserCredentials" EntitySet="UserCredentials" />
+      <End Role="DiaryContent" EntitySet="DiaryContent" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

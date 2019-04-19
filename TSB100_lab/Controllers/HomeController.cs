@@ -9,6 +9,7 @@ namespace TSB100_lab.Controllers
 {
     public class HomeController : Controller
     {
+        UserInfoDBEntities db = new UserInfoDBEntities();
         public ActionResult Index()
         {
             return View();
@@ -17,7 +18,6 @@ namespace TSB100_lab.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
@@ -25,13 +25,23 @@ namespace TSB100_lab.Controllers
         [HttpPost]
         public ActionResult Login(UserCredentials login)
         {
+            if (login.Username == null || login.Password == null)
+            {
+                ModelState.AddModelError("", "Du måste ange användarnamn och lösenord");
+                return View();
+            }
+
             bool validUser = false;
+            /* LOGIN TEST WITH FORMSAUTHENTICATION 
             validUser = System.Web.Security.FormsAuthentication.Authenticate(login.Username, login.Password);
+            */
+            validUser = ValidateUser(login.Username, login.Password);
 
             if (validUser)
             {
                 System.Web.Security.FormsAuthentication.RedirectFromLoginPage(login.Username, false);
             }
+            ModelState.AddModelError("", "Inloggning misslyckades, vänligen försök igen");
             return View();
         }
 
@@ -49,6 +59,23 @@ namespace TSB100_lab.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        private bool ValidateUser(string username, string password)
+        {
+            var user = from row in db.UserCredentials
+                       where row.Username.ToUpper() == username.ToUpper()
+                       && row.Password == password
+                       select row;
+
+            if (user.Count() == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
