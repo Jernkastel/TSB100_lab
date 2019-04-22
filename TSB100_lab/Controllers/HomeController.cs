@@ -10,6 +10,7 @@ namespace TSB100_lab.Controllers
     public class HomeController : Controller
     {
         UserInfoDBEntities db = new UserInfoDBEntities();
+
         public ActionResult Index()
         {
             return View();
@@ -41,8 +42,9 @@ namespace TSB100_lab.Controllers
             {
                 System.Web.Security.FormsAuthentication.RedirectFromLoginPage(login.Username, false);
             }
-            ModelState.AddModelError("", "Inloggning misslyckades, vänligen försök igen");
+            ModelState.AddModelError("", "Inloggningen misslyckades, vänligen försök igen");
             return View();
+
         }
 
         [Authorize]

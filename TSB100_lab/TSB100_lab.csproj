@@ -224,6 +224,9 @@
     <Content Include="UserInfoModel.edmx.diagram">
       <DependentUpon>UserInfoModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\MyDiary\CreateEntry.cshtml" />
+    <Content Include="Views\MyDiary\DeleteEntry.cshtml" />
+    <Content Include="Views\MyDiary\EditEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

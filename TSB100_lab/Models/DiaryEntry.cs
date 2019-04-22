@@ -10,6 +10,6 @@ namespace TSB100_lab.Models
         public string Author { get; set; }
         public DateTime Date { get; set; }
         public string Entry { get; set; }
-        public bool Importance { get; set; }
+        public bool Important { get; set; }
     }
 }

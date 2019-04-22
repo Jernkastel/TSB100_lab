@@ -3,8 +3,9 @@
     "",
     "\\TSB100_lab",
     "\\TSB100_lab\\App_Data",
-    "\\TSB100_lab\\Views"
+    "\\TSB100_lab\\Views",
+    "\\TSB100_lab\\Views\\Home"
   ],
-  "SelectedNode": "\\TSB100_lab\\App_Data\\UserInfoDB.mdf",
+  "SelectedNode": "\\TSB100_lab\\Views\\Home\\Login.cshtml",
   "PreviewInSolutionExplorer": false
 }

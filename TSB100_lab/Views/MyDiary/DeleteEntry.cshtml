@@ -1,0 +1,23 @@
+﻿@model TSB100_lab.DiaryContent
+@{
+    ViewBag.Title = "DeleteEntry";
+}
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Author)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Entry)
+    </td>
+</tr>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <input type="submit" value="Radera" class="btn btn-default" />
+    </div>
+
+}

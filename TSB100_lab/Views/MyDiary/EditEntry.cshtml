@@ -1,0 +1,23 @@
+﻿@model TSB100_lab.DiaryContent
+@{
+    ViewBag.Title = "EditEntry";
+}
+
+@using (Html.BeginForm())
+{
+<tr>
+    <td>
+        @Html.EditorFor(modelItem => Model.Author)
+    </td>
+    <td>
+        @Html.EditorFor(modelItem => Model.Date)
+    </td>
+    <td>
+        @Html.EditorFor(modelItem => Model.Entry)
+    </td>
+</tr>
+    <div class="row">
+        <input type="submit" value="Ändra" class="btn btn-default" />
+    </div>
+
+}
