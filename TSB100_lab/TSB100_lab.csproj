@@ -57,6 +57,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -134,8 +135,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\WCFDiaryService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyDiaryController.cs" />
+    <Compile Include="Controllers\WCFDiaryController.cs" />
     <Compile Include="DiaryContent.cs">
       <DependentUpon>UserInfoModel.tt</DependentUpon>
     </Compile>
@@ -169,6 +176,16 @@
     <Content Include="App_Data\UserInfoDB_log.ldf">
       <DependentUpon>UserInfoDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Connected Services\WCFDiaryService\TSB100_lab.WCFDiaryService.WCFDiaryServiceData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\WCFDiaryService\WCFDiaryService.disco" />
+    <None Include="Connected Services\WCFDiaryService\configuration91.svcinfo" />
+    <None Include="Connected Services\WCFDiaryService\configuration.svcinfo" />
+    <None Include="Connected Services\WCFDiaryService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -179,6 +196,16 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Connected Services\WCFDiaryService\WCFDiaryService.wsdl" />
+    <None Include="Connected Services\WCFDiaryService\WCFDiaryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFDiaryService\WCFDiaryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFDiaryService\WCFDiaryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -227,6 +254,7 @@
     <Content Include="Views\MyDiary\CreateEntry.cshtml" />
     <Content Include="Views\MyDiary\DeleteEntry.cshtml" />
     <Content Include="Views\MyDiary\EditEntry.cshtml" />
+    <Content Include="Views\WCFDiary\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -244,6 +272,13 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WCFDiaryService\" />
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

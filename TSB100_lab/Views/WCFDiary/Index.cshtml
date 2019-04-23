@@ -1,0 +1,29 @@
+﻿@model List<TSB100_lab.WCFDiaryService.WCFDiaryServiceData>
+<h2>WCF Service Dagbok</h2>
+<table class="table">
+    <tr>
+        <th>
+            <p>Author</p>
+        </th>
+        <th>
+            <p>Date</p>
+        </th>
+        <th>
+            <p>Entry</p>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Entry)
+            </td>
+        </tr>
+    }
+</table>
