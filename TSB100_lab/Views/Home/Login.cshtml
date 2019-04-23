@@ -1,20 +1,22 @@
 ﻿@model TSB100_lab.Models.UserCredentials
-
+@{
+    ViewBag.Title = "Logga in";
+}
 <h1>Logga in</h1>
 
 @using (Html.BeginForm())
 {
-    <div class="row">
+    <div>
         <div>Namn: </div>
         <div>@Html.TextBoxFor(m => m.Username)</div>
     </div>
 
-    <div class="row">
+    <div>
         <div>Lösenord: </div>
         <div>@Html.PasswordFor(m => m.Password)</div>
     </div>
 
-    <div class="row">
+    <div>
         <input type="submit" value="Logga in" class="btn btn-default" />
     </div>
     <div>

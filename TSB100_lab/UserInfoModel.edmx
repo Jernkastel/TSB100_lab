@@ -4,12 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UserInfoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="UserInfoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DiaryContent">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Author" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Entry" Type="text" Nullable="false" />
@@ -17,33 +18,35 @@
         </EntityType>
         <EntityType Name="UserCredentials">
           <Key>
-            <PropertyRef Name="Username" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AdminStatus" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Author">
+        <Association Name="FK_UserId">
           <End Role="UserCredentials" Type="Self.UserCredentials" Multiplicity="1" />
           <End Role="DiaryContent" Type="Self.DiaryContent" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserCredentials">
-              <PropertyRef Name="Username" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="DiaryContent">
-              <PropertyRef Name="Author" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="UserInfoDBModelStoreContainer">
           <EntitySet Name="DiaryContent" EntityType="Self.DiaryContent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCredentials" EntityType="Self.UserCredentials" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Author" Association="Self.FK_Author">
+          <AssociationSet Name="FK_UserId" Association="Self.FK_UserId">
             <End Role="UserCredentials" EntitySet="UserCredentials" />
             <End Role="DiaryContent" EntitySet="DiaryContent" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UserInfoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -51,38 +54,40 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Entry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Important" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="UserCredentials" Relationship="Self.FK_Author" FromRole="DiaryContent" ToRole="UserCredentials" />
+          <NavigationProperty Name="UserCredentials" Relationship="Self.FK_UserId" FromRole="DiaryContent" ToRole="UserCredentials" />
         </EntityType>
         <EntityType Name="UserCredentials">
           <Key>
-            <PropertyRef Name="Username" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AdminStatus" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="DiaryContent" Relationship="Self.FK_Author" FromRole="UserCredentials" ToRole="DiaryContent" />
+          <NavigationProperty Name="DiaryContent" Relationship="Self.FK_UserId" FromRole="UserCredentials" ToRole="DiaryContent" />
         </EntityType>
-        <Association Name="FK_Author">
+        <Association Name="FK_UserId">
           <End Role="UserCredentials" Type="Self.UserCredentials" Multiplicity="1" />
           <End Role="DiaryContent" Type="Self.DiaryContent" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserCredentials">
-              <PropertyRef Name="Username" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="DiaryContent">
-              <PropertyRef Name="Author" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="UserInfoDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DiaryContent" EntityType="Self.DiaryContent" />
           <EntitySet Name="UserCredentials" EntityType="Self.UserCredentials" />
-          <AssociationSet Name="FK_Author" Association="Self.FK_Author">
+          <AssociationSet Name="FK_UserId" Association="Self.FK_UserId">
             <End Role="UserCredentials" EntitySet="UserCredentials" />
             <End Role="DiaryContent" EntitySet="DiaryContent" />
           </AssociationSet>
@@ -97,6 +102,7 @@
             <EntityTypeMapping TypeName="UserInfoDBModel.DiaryContent">
               <MappingFragment StoreEntitySet="DiaryContent">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Entry" ColumnName="Entry" />
@@ -107,6 +113,7 @@
           <EntitySetMapping Name="UserCredentials">
             <EntityTypeMapping TypeName="UserInfoDBModel.UserCredentials">
               <MappingFragment StoreEntitySet="UserCredentials">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="AdminStatus" ColumnName="AdminStatus" />

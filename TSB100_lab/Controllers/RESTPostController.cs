@@ -15,32 +15,41 @@ namespace TSB100_lab.Controllers
         public async Task<ActionResult> Index()
         {
             List<RESTServicePosts> Postinfo = new List<RESTServicePosts>();
-
-            using (var client = new HttpClient())
+            //The try-catches are bad and serve no real purpose in the current iteration
+            try
             {
-                //Passing service base url  
-                client.BaseAddress = new Uri(Baseurl);
-
-                client.DefaultRequestHeaders.Clear();
-                //Define request data format  
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
-                HttpResponseMessage Res = await client.GetAsync("api/PostContent");
-
-                //Checking the response is successful or not which is sent using HttpClient  
-                if (Res.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    //Storing the response details recieved from web api   
-                    var PostResponse = Res.Content.ReadAsStringAsync().Result;
+                    //Passing service base url  
+                    client.BaseAddress = new Uri(Baseurl);
 
-                    //Deserializing the response recieved from web api and storing into the Employee list  
-                    Postinfo = JsonConvert.DeserializeObject<List<RESTServicePosts>>(PostResponse);
+                    client.DefaultRequestHeaders.Clear();
+                    //Define request data format  
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+                    //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
+                    HttpResponseMessage Res = await client.GetAsync("api/PostContent");
+
+                    //Checking the response is successful or not which is sent using HttpClient  
+                    if (Res.IsSuccessStatusCode)
+                    {
+                        //Storing the response details recieved from web api   
+                        var PostResponse = Res.Content.ReadAsStringAsync().Result;
+
+                        //Deserializing the response recieved from web api and storing into the Employee list  
+                        Postinfo = JsonConvert.DeserializeObject<List<RESTServicePosts>>(PostResponse);
+
+                    }
+                    //returning the employee list to view  
+                    return View(Postinfo);
                 }
-                //returning the employee list to view  
-                return View(Postinfo);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return RedirectToAction("Index");
+            }
+            
         }
     }
 }

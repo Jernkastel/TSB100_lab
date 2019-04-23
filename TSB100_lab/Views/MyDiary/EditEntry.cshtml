@@ -1,23 +1,22 @@
 ﻿@model TSB100_lab.DiaryContent
 @{
-    ViewBag.Title = "EditEntry";
+    ViewBag.Title = "Ändra inlägg";
 }
-
+<h1>Redigera inlägg</h1>
 @using (Html.BeginForm())
 {
-<tr>
-    <td>
-        @Html.EditorFor(modelItem => Model.Author)
-    </td>
-    <td>
-        @Html.EditorFor(modelItem => Model.Date)
-    </td>
-    <td>
-        @Html.EditorFor(modelItem => Model.Entry)
-    </td>
-</tr>
-    <div class="row">
+    //This data is hidden from the user since it should not be changed.
+    //A future implementation would be for Date to save time of the last edit.
+    @Html.HiddenFor(modelItem => Model.UserId)
+    @Html.HiddenFor(modelItem => Model.Author)
+    @Html.HiddenFor(modelItem => Model.Date)
+    <div>Inlägg:</div> 
+    <div>@Html.TextAreaFor(modelItem => Model.Entry)</div>
+    <div>
+        <div>Viktigt inlägg: @Html.CheckBoxFor(modelItem => Model.Important)</div>
+    </div>
+    <br />
+    <div>
         <input type="submit" value="Ändra" class="btn btn-default" />
     </div>
-
 }

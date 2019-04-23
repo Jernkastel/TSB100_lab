@@ -33,9 +33,6 @@ namespace TSB100_lab.Controllers
             }
 
             bool validUser = false;
-            /* LOGIN TEST WITH FORMSAUTHENTICATION 
-            validUser = System.Web.Security.FormsAuthentication.Authenticate(login.Username, login.Password);
-            */
             validUser = ValidateUser(login.Username, login.Password);
 
             if (validUser)
@@ -53,12 +50,6 @@ namespace TSB100_lab.Controllers
             System.Web.Security.FormsAuthentication.SignOut();
             System.Web.Security.FormsAuthentication.RedirectToLoginPage();
             return RedirectToAction("Login");
-        }
-
-        [Authorize]
-        public ActionResult Contact()
-        {
-            return View();
         }
 
         private bool ValidateUser(string username, string password)

@@ -11,9 +11,19 @@ namespace TSB100_lab.Controllers
         // GET: WCFDiary
         public ActionResult Index()
         {
-            WCFDiaryService.WCFDiaryServiceClient client = new WCFDiaryService.WCFDiaryServiceClient();
-            List<WCFDiaryService.WCFDiaryServiceData> wcfDiaryList = client.GetDiaryData().ToList();
-            return View(wcfDiaryList);
+            //The try-catches are bad and serve no real purpose in the current iteration
+            try
+            {
+                WCFDiaryService.WCFDiaryServiceClient client = new WCFDiaryService.WCFDiaryServiceClient();
+                List<WCFDiaryService.WCFDiaryContentData> wcfDiaryList = client.GetDiaryData().ToList();
+                return View(wcfDiaryList);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return RedirectToAction("Index");
+            }
+            
         }
     }
 }

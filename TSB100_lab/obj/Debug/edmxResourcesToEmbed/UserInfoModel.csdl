@@ -4,38 +4,40 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
     <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Entry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Important" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="UserCredentials" Relationship="Self.FK_Author" FromRole="DiaryContent" ToRole="UserCredentials" />
+    <NavigationProperty Name="UserCredentials" Relationship="Self.FK_UserId" FromRole="DiaryContent" ToRole="UserCredentials" />
   </EntityType>
   <EntityType Name="UserCredentials">
     <Key>
-      <PropertyRef Name="Username" />
+      <PropertyRef Name="Id" />
     </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="AdminStatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="DiaryContent" Relationship="Self.FK_Author" FromRole="UserCredentials" ToRole="DiaryContent" />
+    <NavigationProperty Name="DiaryContent" Relationship="Self.FK_UserId" FromRole="UserCredentials" ToRole="DiaryContent" />
   </EntityType>
-  <Association Name="FK_Author">
+  <Association Name="FK_UserId">
     <End Role="UserCredentials" Type="Self.UserCredentials" Multiplicity="1" />
     <End Role="DiaryContent" Type="Self.DiaryContent" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UserCredentials">
-        <PropertyRef Name="Username" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="DiaryContent">
-        <PropertyRef Name="Author" />
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="UserInfoDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="DiaryContent" EntityType="Self.DiaryContent" />
     <EntitySet Name="UserCredentials" EntityType="Self.UserCredentials" />
-    <AssociationSet Name="FK_Author" Association="Self.FK_Author">
+    <AssociationSet Name="FK_UserId" Association="Self.FK_UserId">
       <End Role="UserCredentials" EntitySet="UserCredentials" />
       <End Role="DiaryContent" EntitySet="DiaryContent" />
     </AssociationSet>

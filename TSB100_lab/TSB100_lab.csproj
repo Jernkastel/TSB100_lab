@@ -181,7 +181,7 @@
     <Content Include="App_Data\UserInfoDB_log.ldf">
       <DependentUpon>UserInfoDB.mdf</DependentUpon>
     </Content>
-    <Content Include="Connected Services\WCFDiaryService\TSB100_lab.WCFDiaryService.WCFDiaryServiceData.datasource">
+    <Content Include="Connected Services\WCFDiaryService\TSB100_lab.WCFDiaryService.WCFDiaryContentData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\WCFDiaryService\WCFDiaryService.disco" />
@@ -195,6 +195,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Custom\CustomStyle.css" />
+    <Content Include="Content\Custom\diary.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -224,8 +226,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="UserInfoModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UserInfoModel.Context.cs</LastGenOutput>
       <DependentUpon>UserInfoModel.edmx</DependentUpon>
+      <LastGenOutput>UserInfoModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="UserInfoModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -246,9 +248,13 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MyDiary\Index.cshtml" />
+    <Content Include="Views\MyDiary\CreateEntry.cshtml" />
+    <Content Include="Views\MyDiary\DeleteEntry.cshtml" />
+    <Content Include="Views\MyDiary\EditEntry.cshtml" />
+    <Content Include="Views\WCFDiary\Index.cshtml" />
+    <Content Include="Views\RESTPost\Index.cshtml" />
     <EntityDeploy Include="UserInfoModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>UserInfoModel.Designer.cs</LastGenOutput>
@@ -256,11 +262,6 @@
     <Content Include="UserInfoModel.edmx.diagram">
       <DependentUpon>UserInfoModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\MyDiary\CreateEntry.cshtml" />
-    <Content Include="Views\MyDiary\DeleteEntry.cshtml" />
-    <Content Include="Views\MyDiary\EditEntry.cshtml" />
-    <Content Include="Views\WCFDiary\Index.cshtml" />
-    <Content Include="Views\RESTPost\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -284,7 +285,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\WCFDiaryService\" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

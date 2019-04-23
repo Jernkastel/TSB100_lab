@@ -20,6 +20,7 @@ namespace TSB100_lab
             this.DiaryContent = new HashSet<DiaryContent>();
         }
     
+        public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public bool AdminStatus { get; set; }

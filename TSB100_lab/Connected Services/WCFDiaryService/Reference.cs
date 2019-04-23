@@ -15,9 +15,9 @@ namespace TSB100_lab.WCFDiaryService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="WCFDiaryServiceData", Namespace="http://schemas.datacontract.org/2004/07/TSB_lab_WCFService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WCFDiaryContentData", Namespace="http://schemas.datacontract.org/2004/07/TSB_lab_WCFService")]
     [System.SerializableAttribute()]
-    public partial class WCFDiaryServiceData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class WCFDiaryContentData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -127,10 +127,10 @@ namespace TSB100_lab.WCFDiaryService {
     public interface IWCFDiaryService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFDiaryService/GetDiaryData", ReplyAction="http://tempuri.org/IWCFDiaryService/GetDiaryDataResponse")]
-        TSB100_lab.WCFDiaryService.WCFDiaryServiceData[] GetDiaryData();
+        TSB100_lab.WCFDiaryService.WCFDiaryContentData[] GetDiaryData();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFDiaryService/GetDiaryData", ReplyAction="http://tempuri.org/IWCFDiaryService/GetDiaryDataResponse")]
-        System.Threading.Tasks.Task<TSB100_lab.WCFDiaryService.WCFDiaryServiceData[]> GetDiaryDataAsync();
+        System.Threading.Tasks.Task<TSB100_lab.WCFDiaryService.WCFDiaryContentData[]> GetDiaryDataAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -160,11 +160,11 @@ namespace TSB100_lab.WCFDiaryService {
                 base(binding, remoteAddress) {
         }
         
-        public TSB100_lab.WCFDiaryService.WCFDiaryServiceData[] GetDiaryData() {
+        public TSB100_lab.WCFDiaryService.WCFDiaryContentData[] GetDiaryData() {
             return base.Channel.GetDiaryData();
         }
         
-        public System.Threading.Tasks.Task<TSB100_lab.WCFDiaryService.WCFDiaryServiceData[]> GetDiaryDataAsync() {
+        public System.Threading.Tasks.Task<TSB100_lab.WCFDiaryService.WCFDiaryContentData[]> GetDiaryDataAsync() {
             return base.Channel.GetDiaryDataAsync();
         }
     }

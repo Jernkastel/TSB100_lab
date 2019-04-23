@@ -5,6 +5,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="Author" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Entry" Type="text" Nullable="false" />
@@ -12,28 +13,29 @@
   </EntityType>
   <EntityType Name="UserCredentials">
     <Key>
-      <PropertyRef Name="Username" />
+      <PropertyRef Name="Id" />
     </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="AdminStatus" Type="bit" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Author">
+  <Association Name="FK_UserId">
     <End Role="UserCredentials" Type="Self.UserCredentials" Multiplicity="1" />
     <End Role="DiaryContent" Type="Self.DiaryContent" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UserCredentials">
-        <PropertyRef Name="Username" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="DiaryContent">
-        <PropertyRef Name="Author" />
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="UserInfoDBModelStoreContainer">
     <EntitySet Name="DiaryContent" EntityType="Self.DiaryContent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserCredentials" EntityType="Self.UserCredentials" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Author" Association="Self.FK_Author">
+    <AssociationSet Name="FK_UserId" Association="Self.FK_UserId">
       <End Role="UserCredentials" EntitySet="UserCredentials" />
       <End Role="DiaryContent" EntitySet="DiaryContent" />
     </AssociationSet>

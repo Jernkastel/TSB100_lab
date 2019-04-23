@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c215699b-8eb3-422c-9c90-529d548397ef" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b4732862-2729-4833-94f6-06d5a9f04ace" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:49328/WCFDiaryService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WCFDiaryService.xsd" MetadataType="Schema" ID="53615af3-95c6-41e8-bd55-28a227423179" SourceId="1" SourceUrl="http://localhost:49328/WCFDiaryService.svc?xsd=xsd1" />
-    <MetadataFile FileName="WCFDiaryService.disco" MetadataType="Disco" ID="882a1269-d33e-4f51-b680-9d279e7a1952" SourceId="1" SourceUrl="http://localhost:49328/WCFDiaryService.svc?disco" />
-    <MetadataFile FileName="WCFDiaryService1.xsd" MetadataType="Schema" ID="c601e5e9-700b-4560-aeb5-145926ec2d18" SourceId="1" SourceUrl="http://localhost:49328/WCFDiaryService.svc?xsd=xsd0" />
-    <MetadataFile FileName="WCFDiaryService2.xsd" MetadataType="Schema" ID="49a7be6d-dc62-492d-844a-fee962a0764b" SourceId="1" SourceUrl="http://localhost:49328/WCFDiaryService.svc?xsd=xsd2" />
-    <MetadataFile FileName="WCFDiaryService.wsdl" MetadataType="Wsdl" ID="8ecaf690-30a9-438d-afda-271aeba50120" SourceId="1" SourceUrl="http://localhost:49328/WCFDiaryService.svc?wsdl" />
+    <MetadataFile FileName="WCFDiaryService.xsd" MetadataType="Schema" ID="34105bbf-804d-4443-aacc-1c2a6a421068" SourceId="1" SourceUrl="http://localhost:49328/WCFDiaryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="WCFDiaryService.disco" MetadataType="Disco" ID="d507f974-f1d3-46cc-92ae-73e82f3fea91" SourceId="1" SourceUrl="http://localhost:49328/WCFDiaryService.svc?disco" />
+    <MetadataFile FileName="WCFDiaryService1.xsd" MetadataType="Schema" ID="76bd6007-61f9-4024-bf45-5fa21c8848ca" SourceId="1" SourceUrl="http://localhost:49328/WCFDiaryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="WCFDiaryService2.xsd" MetadataType="Schema" ID="c1b14669-8951-4448-ac1a-1261da296612" SourceId="1" SourceUrl="http://localhost:49328/WCFDiaryService.svc?xsd=xsd2" />
+    <MetadataFile FileName="WCFDiaryService.wsdl" MetadataType="Wsdl" ID="028c44aa-a6a0-4498-9224-8e6e25691478" SourceId="1" SourceUrl="http://localhost:49328/WCFDiaryService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

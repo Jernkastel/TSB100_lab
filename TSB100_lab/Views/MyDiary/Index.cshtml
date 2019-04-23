@@ -8,19 +8,19 @@
 <table class="table">
     <tr>
         <th>
-            <p>Author</p>
+            <p>Skapare</p>
         </th>
         <th>
-            <p>Date</p>
+            <p>Datum</p>
         </th>
         <th>
-            <p>Entry</p>
+            <p>Inlägg</p>
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
-    <tr>
+    <tr class="content">
         <td>
             @Html.DisplayFor(modelItem => item.Author)
         </td>
@@ -46,6 +46,6 @@
     </tr>
     }
 </table>
-<div class="row">
+<div>
     @Html.ActionLink("Skapa nytt inlägg", "CreateEntry", new { @class="btn btn-default" })
 </div>

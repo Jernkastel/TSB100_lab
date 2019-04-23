@@ -15,6 +15,7 @@ namespace TSB100_lab
     public partial class DiaryContent
     {
         public int Id { get; set; }
+        public int UserId { get; set; }
         public string Author { get; set; }
         public System.DateTime Date { get; set; }
         public string Entry { get; set; }

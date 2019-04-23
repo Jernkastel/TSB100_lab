@@ -11,7 +11,7 @@ namespace TSB100_lab.Controllers
     {
         UserInfoDBEntities db = new UserInfoDBEntities();
 
-        // GET: MyDiary
+        //Get
         public ActionResult Index()
         {
 
@@ -29,44 +29,56 @@ namespace TSB100_lab.Controllers
         [HttpPost]
         public ActionResult CreateEntry(DiaryContent diaryContent)
         {
+            //UserId is set to either 1(admin) or 2(John_doe) depending on user identity.
+            //This is a hard-coded and temporary solution. Not at all how it should be done.
+            //Since there currently only exists two users, and no function to add more exists within the webage itself, it works as a bandaid solution.
+            int tempId = 0;
+            if (User.Identity.Name == "John_doe")
+            {
+                tempId = 2;
+            }
+            else
+            {
+                tempId = 1;
+            }
+
             var diaryContentResult = new DiaryContent
             {
+                UserId = tempId,
                 Author = User.Identity.Name,
                 Date = DateTime.Now,
                 Entry = diaryContent.Entry,
                 Important = diaryContent.Important
             };
-
-            db.DiaryContent.Add(diaryContentResult);
-            db.SaveChanges();
+            //The try-catches are bad and serve no real purpose in the current iteration
+            try
+            {
+                db.DiaryContent.Add(diaryContentResult);
+                db.SaveChanges();
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             return RedirectToAction("Index");
+
         }
 
-        public ActionResult DeleteEntry(int id /*, DiaryContent userOwnership*/)
+        public ActionResult DeleteEntry(int id)
         {
-            /*
-            
-            if (User.Identity.Name == userOwnership.Author)
+            //Deletes entry and saves changes to database
+            try
             {
                 DiaryContent deletedEntry = db.DiaryContent.Find(id);
                 db.DiaryContent.Remove(deletedEntry);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
-            else
+            catch (Exception e)
             {
-                ViewBag.Alert = "Det är bara ägaren av ett inlägg som kan radera det";
-                return RedirectToAction("Index");
+                Console.WriteLine(e);
             }
-            */
-            /* var user = from row in db.UserCredentials
-                           where row.Username.ToUpper() == username.ToUpper()
-                           && row.Password == password
-                           select row; */
             
-            DiaryContent deletedEntry = db.DiaryContent.Find(id);
-            db.DiaryContent.Remove(deletedEntry);
-            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -83,9 +95,18 @@ namespace TSB100_lab.Controllers
         [HttpPost]
         public ActionResult EditEntry(DiaryContent editedContent)
         {
-            db.Entry(editedContent).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            try
+            {
+                db.Entry(editedContent).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
             return RedirectToAction("Index");
+
         }
     }
 }

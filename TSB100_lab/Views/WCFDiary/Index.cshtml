@@ -1,29 +1,43 @@
-﻿@model List<TSB100_lab.WCFDiaryService.WCFDiaryServiceData>
+﻿@model List<TSB100_lab.WCFDiaryService.WCFDiaryContentData>
+@{
+    ViewBag.Title = "WCF service dagbok";
+}
+
 <h2>WCF Service Dagbok</h2>
+
 <table class="table">
     <tr>
         <th>
-            <p>Author</p>
+            <p>Skapare</p>
         </th>
         <th>
-            <p>Date</p>
+            <p>Datum</p>
         </th>
         <th>
-            <p>Entry</p>
+            <p>Inlägg</p>
         </th>
     </tr>
     @foreach (var item in Model)
-    {
-        <tr>
+     {
+        <tr class="content">
             <td>
                 @Html.DisplayFor(modelItem => item.Author)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Entry)
-            </td>
+            @if (item.Important == true)
+            {
+                <td style="font-weight: bold" >
+                    @Html.DisplayFor(modelItem => item.Entry)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Entry)
+                </td>
+            }
         </tr>
-    }
+     }
 </table>

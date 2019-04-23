@@ -1,18 +1,20 @@
 ﻿@model TSB100_lab.DiaryContent
-
+@{
+    ViewBag.Title = "Nytt inlägg";
+}
 <h1>Skapa nytt inlägg</h1>
 
 @using (Html.BeginForm())
 {
-    <div class="row">
+    <div>
         <div>Text: </div>
-        <div>@Html.EditorFor(m => m.Entry)</div>
+        <div>@Html.TextAreaFor(m => m.Entry)</div>
     </div>
-
-    <div class="row">
+    //Entry marked as important will show up in bold text
+    <div>
         <div>Viktigt inlägg: @Html.CheckBoxFor(m => m.Important)</div>
     </div>
-    <div class="row">
+    <div>
         <input type="submit" value="Skapa inlägg" class="btn btn-default" />
     </div>
 }

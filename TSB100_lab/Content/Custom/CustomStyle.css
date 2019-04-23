@@ -1,0 +1,21 @@
+﻿.navbar{
+    background-color: midnightblue;
+    color: white;
+}
+.indexpage {
+    text-align: center
+}
+.introduction {
+    text-align: center
+}
+.entrybox {
+    font-family:inherit;
+    width: 100px;
+    height: 200px;
+}
+.content {
+    background-color: navajowhite;
+}
+.obs{
+    font-weight: bold;
+}

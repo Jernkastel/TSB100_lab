@@ -121,6 +121,5 @@ C:\Users\Max Jern\source\GitHub\TSB100_lab\TSB100_lab\obj\Debug\TSB100_lab.cspro
 C:\Users\Max Jern\source\GitHub\TSB100_lab\TSB100_lab\obj\Debug\TSB100_lab.csproj.CopyComplete
 C:\Users\Max Jern\source\GitHub\TSB100_lab\TSB100_lab\obj\Debug\TSB100_lab.dll
 C:\Users\Max Jern\source\GitHub\TSB100_lab\TSB100_lab\obj\Debug\TSB100_lab.pdb
-C:\Users\Max Jern\source\GitHub\TSB100_lab\TSB100_lab\obj\Debug\TSB100_lab.csprojAssemblyReference.cache
 C:\Users\Max Jern\source\GitHub\TSB100_lab\TSB100_lab\bin\System.Net.Http.Formatting.dll
 C:\Users\Max Jern\source\GitHub\TSB100_lab\TSB100_lab\bin\System.Net.Http.Formatting.xml

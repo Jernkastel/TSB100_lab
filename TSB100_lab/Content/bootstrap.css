@@ -6754,4 +6754,8 @@ button.close {
     display: none !important;
   }
 }
+.singleTextBox {
+    width: 12em;
+    height: 10em;
+}
 /*# sourceMappingURL=bootstrap.css.map */
