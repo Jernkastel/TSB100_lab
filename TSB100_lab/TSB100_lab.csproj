@@ -55,6 +55,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
@@ -142,6 +145,7 @@
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyDiaryController.cs" />
+    <Compile Include="Controllers\RESTPostController.cs" />
     <Compile Include="Controllers\WCFDiaryController.cs" />
     <Compile Include="DiaryContent.cs">
       <DependentUpon>UserInfoModel.tt</DependentUpon>
@@ -150,6 +154,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DiaryEntry.cs" />
+    <Compile Include="Models\RESTServicePosts.cs" />
     <Compile Include="Models\UserCredentials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserCredentials.cs">
@@ -255,6 +260,7 @@
     <Content Include="Views\MyDiary\DeleteEntry.cshtml" />
     <Content Include="Views\MyDiary\EditEntry.cshtml" />
     <Content Include="Views\WCFDiary\Index.cshtml" />
+    <Content Include="Views\RESTPost\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

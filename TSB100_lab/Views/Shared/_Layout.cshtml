@@ -20,12 +20,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("SOAP", "Index", "Home")</li>
-                    <li>@Html.ActionLink("WCF Dagbok", "Index", "WCFDiary")</li>
+                    <li>@Html.ActionLink("Att-göra", "Index", "RESTPost")</li>
+                    <li>@Html.ActionLink("Främmande dagbok", "Index", "WCFDiary")</li>
                     @{
                         if (@User.Identity.Name != "")
                         {
-                            <li>@Html.ActionLink(@User.Identity.Name, "Index", "MyDiary")</li>
+                            <li>@Html.ActionLink(User.Identity.Name + "s lokal dagbok", "Index", "MyDiary")</li>
                             <li>@Html.ActionLink("Logga ut", "Logout", "Home")</li>
                         }
                         else
